@@ -1,0 +1,1 @@
+ADD_EXECUTABLE(Vector_test Vector_test.cpp)
