@@ -1,1 +1,1 @@
-ADD_EXECUTABLE(Vector_test Vector_test.cpp)
+ADD_EXECUTABLE(Deque_test Deque_test.cpp)

@@ -1,5 +1,5 @@
-#ifndef VECTOR_H_
-#define VECTOR_H_
+#ifndef DEQUE_H_
+#define DEQUE_H_
 
 #include <iostream>
 
@@ -10,16 +10,16 @@
 #define DEFAULT_CAPACITY 10
 
 template <typename T>
-class Vector : copyable {
+class Deque : copyable {
 public:
-    explicit Vector(int capacity) : 
+    explicit Deque(int capacity) : 
         m_capacity(capacity),
         m_size(0),
         m_data(new T[m_capacity]){}
 
-    Vector() : Vector(DEFAULT_CAPACITY){}
+    Deque() : Deque(DEFAULT_CAPACITY){}
 
-    Vector(const Vector& other) :                   // 拷贝构造函数
+    Deque(const Deque& other) :                   // 拷贝构造函数
         m_capacity(other.capacity()),
         m_size(other.size()),
         m_data(new T[m_capacity]){
@@ -28,7 +28,7 @@ public:
             }
         }
 
-    ~Vector(){
+    ~Deque(){
         delete[] m_data;
     }
 
@@ -37,7 +37,7 @@ public:
         return m_data[index];
     }
 
-    void operator=(const Vector& other){            // 重载=
+    void operator=(const Deque& other){            // 重载=
         m_capacity = other.capacity();
         m_size = other.size();
         delete[] m_data;
@@ -151,4 +151,4 @@ private:
     T* m_data;
 }; 
 
-#endif // VECTOR_H_
+#endif // DEQUE_H_

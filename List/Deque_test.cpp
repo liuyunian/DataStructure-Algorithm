@@ -1,10 +1,10 @@
-#include "List/Vector.h"
+#include "List/Deque.h"
 
 int main(){
-    Vector<int> v(5);               // test ctor() with one param
+    Deque<int> v(5);               // test ctor() with one param
     v.print();                      // test capacity() size()
 
-    Vector<int> v2;                 // test default ctor()
+    Deque<int> v2;                 // test default ctor()
     v2.print();
 
     v.push_front(1);               // test push_front()
@@ -21,7 +21,7 @@ int main(){
     v2 = v;                         // test operator=()
     v.print();
 
-    Vector<int> v3 = v;            // test cp ctor()
+    Deque<int> v3 = v;            // test cp ctor()
     v3.print();
 
     std::cout << "v[0] = " << v.front() << std::endl;     // test front()
