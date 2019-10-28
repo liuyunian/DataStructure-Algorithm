@@ -19,7 +19,7 @@ public:
 
     Deque() : Deque(DEFAULT_CAPACITY){}
 
-    Deque(const Deque& other) :                   // 拷贝构造函数
+    Deque(const Deque& other) :                     // 拷贝构造函数
         m_capacity(other.capacity()),
         m_size(other.size()),
         m_data(new T[m_capacity]){
@@ -37,7 +37,7 @@ public:
         return m_data[index];
     }
 
-    void operator=(const Deque& other){            // 重载=
+    void operator=(const Deque& other){             // 重载=
         m_capacity = other.capacity();
         m_size = other.size();
         delete[] m_data;
@@ -137,7 +137,7 @@ public:
 
     // for test
     void print() const {
-        std::cout << "capacity = " << m_capacity << ", size = " << m_size << std::endl;
+        std::cout << "Deque: capacity = " << m_capacity << ", size = " << m_size << std::endl;
         std::cout << "data = [";
         for(int i = 0; i < m_size - 1; ++ i){
             std::cout << m_data[i] << ", ";
