@@ -25,9 +25,9 @@ endADT
 * 顺序存储结构：动态数组
 * 链式存储结构：单链表、双向链表、循环链表
 
-### [动态数组(Deque)]()
+### [动态数组(Deque)](Deque.h)
 
-### [单链表(ForwardList)]()
+### [单链表(ForwardList)](ForwardList.h)
 
 ### [双向链表(List)]()
 
