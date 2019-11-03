@@ -1,3 +1,1 @@
-ADD_EXECUTABLE(SortTestHelper_test SortTestHelper_test.cpp)
-
 ADD_EXECUTABLE(MergeSort_test MergeSort_test.cpp)
