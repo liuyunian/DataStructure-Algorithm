@@ -128,10 +128,14 @@ public:
     }
 
     void operator=(const ForwardList& other){       // 重载赋值运算符
-        Node* selfNode = m_head;
-        while(selfNode != nullptr){
-            selfNode = selfNode->next;
-            delete selfNode;
+        {
+            Node* cur = m_head;
+            Node* next;
+            while(cur != nullptr){
+                next = cur->next;
+                delete cur;
+                cur = next;
+            }
         }
 
         m_head = nullptr;
@@ -147,6 +151,7 @@ public:
         }
         
         Node* preNode = m_head;
+        Node* selfNode;
         Node* otherNode = other.head()->next;
         while(otherNode != nullptr){
             selfNode = new Node(otherNode->data);
