@@ -47,8 +47,11 @@ public:
 
     ~ForwardList(){
         Node* curNode = m_head;
+        Node* nextNode;
         while(curNode != nullptr){
-            curNode = curNode->next;
+            nextNode = curNode->next;
+            delete curNode;
+            curNode = nextNode;
         }
     }
 
