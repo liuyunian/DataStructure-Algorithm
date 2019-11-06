@@ -176,7 +176,7 @@ public:
         std::cout << "data = ";
         Node* curNode = m_head;
         while(curNode != nullptr){
-            std::cout << curNode->data << "->";
+            std::cout << curNode->data << " -> ";
             curNode = curNode->next;
         }
         std::cout << "nullptr" << std::endl;

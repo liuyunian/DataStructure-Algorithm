@@ -156,7 +156,7 @@ public:
 
         Node* node = m_head;
         for(int i = 0; i < m_size; ++ i){
-            std::cout << node->data << "<=>";
+            std::cout << node->data << " <=> ";
             node = node->next;
         }
         std::cout << m_head->data << std::endl;

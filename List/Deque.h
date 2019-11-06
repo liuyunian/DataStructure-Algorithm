@@ -127,7 +127,12 @@ public:
 
     // for test
     void print(const char* name) const {
-        std::cout << name << "(Deque): capacity = " << m_capacity << ", size = " << m_size << std::endl;
+        std::cout << name << "(Deque): capacity = " << m_capacity << ", size = " << m_size << '\n';
+        if(m_size == 0){
+            std::cout << "data = empty" << std::endl;
+            return;
+        }
+        
         std::cout << "data = [";
         for(int i = 0; i < m_size - 1; ++ i){
             std::cout << m_data[i] << ", ";
