@@ -73,12 +73,33 @@ public:
         ++ m_size;
     }
 
+    void remove(int index){
+        assert(index >= 0 && index < m_size);
+        for(int i = index + 1; i < m_size; ++ i){
+            m_data[i - 1] = m_data[i]; 
+        }
+
+        -- m_size;
+
+        if(m_capacity / 2 >= DEFAULT_CAPACITY && m_size == m_capacity / 4){
+            resize(m_capacity / 2);
+        }
+    }
+
     void push_front(T elem){
         insert(0, elem);
     }
 
+    void pop_front(){
+        remove(0);
+    }
+
     void push_back(T elem){
         insert(m_size, elem);
+    }
+
+    void pop_back(){
+        remove(m_size - 1);
     }
 
     T& at(int index) const {
@@ -92,27 +113,6 @@ public:
 
     T& back() const {
         at(m_size - 1);
-    } 
-
-    void remove(int index){
-        assert(index >= 0 && index < m_size);
-        for(int i = index + 1; i < m_size; ++ i){
-            m_data[i - 1] = m_data[i]; 
-        }
-
-        -- m_size;
-
-        if(m_capacity / 2 >= DEFAULT_CAPACITY && m_size == m_capacity / 4){ // 当容量大于20，但是存储的元素个数不到容量的1/4时进行缩容
-            resize(m_capacity / 2);
-        }
-    }
-
-    void pop_front(){
-        remove(0);
-    }
-
-    void pop_back(){
-        remove(m_size - 1);
     }
 
     void resize(int newCapacity){
@@ -125,19 +125,9 @@ public:
         m_capacity = newCapacity;
     }
 
-    int find(const T& elem) const {
-        for(int i = 0; i < m_size; ++ i){
-            if(m_data[i] == elem){
-                return i;
-            }
-        }
-
-        return -1;
-    }
-
     // for test
-    void print() const {
-        std::cout << "Deque: capacity = " << m_capacity << ", size = " << m_size << std::endl;
+    void print(const char* name) const {
+        std::cout << name << "(Deque): capacity = " << m_capacity << ", size = " << m_size << std::endl;
         std::cout << "data = [";
         for(int i = 0; i < m_size - 1; ++ i){
             std::cout << m_data[i] << ", ";

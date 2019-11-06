@@ -1,54 +1,50 @@
 #include "List/Deque.h"
 
 int main(){
-    Deque<int> v(5);               // test ctor() with one param
-    v.print();                      // test capacity() size()
+    Deque<int> deque(5);                // test ctor() with one param
+    deque.print("deque");               // test capacity() size()
 
-    Deque<int> v2;                 // test default ctor()
-    v2.print();
+    deque.push_front(1);                // test push_front()
+    deque.print("deque");
 
-    v.push_front(1);               // test push_front()
-    v.print();
-
-    v.insert(0, 0);                // test insert()     
-    v.print();
+    deque.insert(0, 0);                 // test insert()     
+    deque.print("deque");
 
     for(int i = 0; i <= 10; ++ i){
-        v.push_back(i);            // test push_back() resize()
+        deque.push_back(i);             // test push_back() resize()
     }
-    v.print();
+    deque.print("deque");
 
-    v2 = v;                         // test operator=()
-    v.print();
+    Deque<int> deque2;                  // test default ctor()
+    deque2.print("deque2");
+    deque2 = deque;                     // test operator=()
+    deque2.print("deque2");
 
-    Deque<int> v3 = v;            // test cp ctor()
-    v3.print();
+    Deque<int> deque3 = deque;          // test cp ctor()
+    deque3.print("deque3");
 
-    std::cout << "v[0] = " << v.front() << std::endl;     // test front()
-    std::cout << "v[1] = " << v[1] << std::endl;          // test operator[]
-    std::cout << "v[2] = " << v.at(2) << std::endl;       // test at()
-    std::cout << "v.back() = " << v.back() << std::endl;  // test back()
+    std::cout << "deque[0] = " << deque.front() << std::endl;     // test front()
+    std::cout << "deque[1] = " << deque[1] << std::endl;          // test operator[]
+    std::cout << "deque[2] = " << deque.at(2) << std::endl;       // test at()
+    std::cout << "deque.back() = " << deque.back() << std::endl;  // test back()
 
-    v.pop_front();          // test pop_front()
-    v.print();
+    deque.pop_front();                  // test pop_front()
+    deque.print("deque");
 
-    v.pop_back();           // test pop_back()
-    v.print();
+    deque.pop_back();                   // test pop_back()
+    deque.print("deque");
 
-    v.remove(0);            // test remove
-    v.print();
+    deque.remove(0);                    // test remove
+    deque.print("deque");
 
-    int index = v.find(5);  // test find()
-    std::cout << "find index = " << index << std::endl;
-
-    for(int i = 10; i <= 20; ++ i){  // test resize()
-        v.push_back(i);
+    for(int i = 10; i <= 20; ++ i){     // test resize()
+        deque.push_back(i);
     }
-    v.print();
+    deque.print("deque");
 
     for(int i = 1; i <= 15; ++ i){
-        v.pop_back();
-        v.print();
+        deque.pop_back();
+        deque.print("deque");
     }
     
     return 0;
