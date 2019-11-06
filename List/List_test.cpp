@@ -18,6 +18,9 @@ int main(){
     list3 = list;                       // test operaotr=
     list3.print("list3");
 
+    std::cout << "front = " << list.front() << std::endl;
+    std::cout << "back = " << list.back() << std::endl;
+
     for(int i = 0; i < 10; ++ i){
         list.pop_front();               // test pop_front
         list.print("list");

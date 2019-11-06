@@ -128,6 +128,14 @@ public:
         copy(other);
     }
 
+    T& front() const {
+        return m_head->data;
+    }
+
+    T& back() const {
+        return m_head->pre->data;
+    }
+
     // for pratice and it doesn't
     void insert(int index, T elem){}                // 向指定位置插入元素
 
