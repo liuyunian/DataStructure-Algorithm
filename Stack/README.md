@@ -15,22 +15,33 @@ ADT 栈(stack)
 Data
     同线性表。元素具有相同的类型，相邻元素具有前驱和后继关系
 Operation
-    InitStack(*S) //初始化操作，建立一个空栈S
-    DestroyStack(*S) //若栈存在，则销毁它
-    ClearStack(*S) //将栈清空
-    StackEmpty(S) //若栈为空返回true,否则返回false
-    GetTop(S, *e) //若栈存在且非空，用e返回S的栈顶元素
-    Push(*S, e) //若栈S存在，插入新元素e到栈S中并成为栈顶元素
-    Pop(*S, *e) //删除S中栈顶元素，并用e返回其值
-    StackLength(S) //返回栈S的元素个数
+    InitStack(*S)       //初始化操作，建立一个空栈S
+    DestroyStack(*S)    //若栈存在，则销毁它
+    ClearStack(*S)      //将栈清空
+    StackEmpty(S)       //若栈为空返回true,否则返回false
+    GetTop(S, *e)       //若栈存在且非空，用e返回S的栈顶元素
+    Push(*S, e)         //若栈S存在，插入新元素e到栈S中并成为栈顶元素
+    Pop(*S, *e)         //删除S中栈顶元素，并用e返回其值
+    StackLength(S)      //返回栈S的元素个数
 endADT
 ```
 
-## 栈的存储结构
+## 存储结构
 同线性表一样，有两种存储结构：顺序存储结构和链式存储结构  
 栈较动态数组(Deque)、链表(List)来说属于高级容器，它可以在Deque或者List基础上进行实现  
 顺序存储结构的栈是在Deque基础上进一步封装实现的，链式存储结构的栈就是在List基础上实现的  
 这里在[具体实现](Stack.h)时，提供了模板参数传入的方式制定栈的基础结构是Deque还是List，默认是采用Deque
+核心函数如下：  
+
+| 函数 | 功能 | 时间复杂度 |
+| --- | --- | --- |
+| top | 查看栈顶元素 | O(1) |
+| push | 入栈 | O(1) |
+| pop | 出栈 | O(1) |
+
+基础结构采用Deque和List都是上述的时间复杂度  
+如果采用ForwardList或者CircleList时间复杂度将会上升（原因在于统一采用的线性表的头部作为栈底，尾部作为栈顶）  
+同时在ForwardList和CircleList中没有实现back接口（返回尾部元素），所以不允许其作为Stack的基础结构（top需要调用back接口）  
 
 ## 栈的思考
 其实所有的情况下使用Deque或者List作为容器，完全可是编写出解决问题的程序，那为什么要封装栈、队列这样的数据结构呢？  
