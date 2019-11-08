@@ -4,6 +4,7 @@
 ## 数据结构
 [线性表](/List/README.md)  
 [栈](/Stack/README.md)
+[队列](Queue/README.md)
 
 ## 算法
 [排序](/Sort/README.md)
