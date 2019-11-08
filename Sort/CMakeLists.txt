@@ -1,1 +1,0 @@
-ADD_EXECUTABLE(MergeSort_test MergeSort_test.cpp)

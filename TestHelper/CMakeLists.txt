@@ -1,1 +1,0 @@
-ADD_EXECUTABLE(TestHelper_test TestHelper_test.cpp)

@@ -1,2 +1,0 @@
-ADD_EXECUTABLE(Queue_test Queue_test.cpp)
-ADD_EXECUTABLE(CircleQueue_test CircleQueue_test.cpp)

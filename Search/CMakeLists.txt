@@ -1,1 +1,0 @@
-ADD_EXECUTABLE(BinarySearch_test BinarySearch_test.cpp)
