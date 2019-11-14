@@ -108,11 +108,11 @@ public:
     }
 
     T& front() const {
-        at(0);
+        return at(0);
     }
 
     T& back() const {
-        at(m_size - 1);
+        return at(m_size - 1);
     }
 
     void resize(int newCapacity){
