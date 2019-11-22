@@ -1,3 +1,12 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
+PROJECT(DataStructure_and_Algorithm)
+
+ADD_COMPILE_OPTIONS(-std=c++11)
+EXECUTE_PROCESS(COMMAND dirname ${PROJECT_SOURCE_DIR}
+                OUTPUT_VARIABLE INCLUDE_DIR)
+INCLUDE_DIRECTORIES(${INCLUDE_DIR})
+INCLUDE_DIRECTORIES(/usr/local/include)
+
 # List
 ADD_EXECUTABLE(Deque_test Deque_test.cpp)
 ADD_EXECUTABLE(ForwardList_test ForwardList_test.cpp)
