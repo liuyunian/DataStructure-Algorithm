@@ -6,17 +6,17 @@
 ## 抽象数据类型
 ```
 ADT 线性表（List）
-Data //数据元素
-    数据元素之间满足线性表的定义
-Operation //操作数据的方法
-    InitList(*L)            //初始化操作，建立一个空的线性表
-    ListEmpty(L)            //若线性表为空，返回true，否则返回false
-    ClearList(*L)           //将线性表清空
-    GetElem(L, i, *e)       //将线性表L中的第i个元素值返回给e
-    LocateElem(L, e)        //在线性表L中查找与给定值e相等的元素，如果成功，返回该元素在表中的序号，否则返回0
-    ListInsert(*L, i ,e)    //在线性表L中第i个位置插入新元素e
-    ListDelete(*L, i, e)    //删除线性表L中第i个位置元素，并用e返回其值
-    ListLength(L)           //返回线性表L的元素个数
+Data
+	数据元素之间满足线性表的定义
+Operation
+	InitList(*L)            // 初始化操作，建立一个空的线性表
+	ListEmpty(L)            // 若线性表为空，返回true，否则返回false
+	ClearList(*L)           // 将线性表清空
+	GetElem(L, i, *e)       // 将线性表L中的第i个元素值返回给e
+	LocateElem(L, e)        // 在线性表L中查找与给定值e相等的元素，如果成功，返回该元素在表中的序号，否则返回0
+	ListInsert(*L, i ,e)    // 在线性表L中第i个位置插入新元素e
+	ListDelete(*L, i, e)    // 删除线性表L中第i个位置元素，并用e返回其值
+	ListLength(L)           // 返回线性表L的元素个数
 endADT
 ```
 

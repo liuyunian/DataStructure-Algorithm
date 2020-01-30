@@ -9,190 +9,186 @@
 template <typename T>
 class CircleList : copyable {
 public:
-    struct Node : noncopyable {
-        T data;
-        Node* next;
+	struct Node : noncopyable {
+		T data;
+		Node *next;
 
-        Node(T elem) : data(elem), next(nullptr){}
-    };
+		Node(T elem) : data(elem), next(nullptr){}
+	};
 
-    CircleList() : m_tail(nullptr), m_size(0){}     // 默认构造函数
-    CircleList(const CircleList& other) : 
-        m_tail(nullptr),
-        m_size(other.size())
-    {
-        if(m_size == 0){
-            return;
-        }
+	CircleList() : m_tail(nullptr), m_size(0){}     // 默认构造函数
 
-        m_tail = new Node(other.tail()->data);
+	CircleList(const CircleList &other) : 
+		m_tail(nullptr),
+		m_size(other.size())
+	{
+		if(m_size == 0){
+			return;
+		}
 
-        Node* preNode = m_tail;
-        Node* selfNode;
-        Node* otherNode = other.head();
-        while(otherNode != other.tail()){
-            selfNode = new Node(otherNode->data);
-            preNode->next = selfNode;
-            preNode = preNode->next;
-            otherNode = otherNode->next;
-        }
-        preNode->next = m_tail;
-    }
+		m_tail = new Node(other.tail()->data);
 
-    ~CircleList(){
-        clear();
-    }
+		Node *preNode = m_tail;
+		Node *selfNode;
+		Node *otherNode = other.head();
+		while(otherNode != other.tail()){
+			selfNode = new Node(otherNode->data);
+			preNode->next = selfNode;
+			preNode = preNode->next;
+			otherNode = otherNode->next;
+		}
+		preNode->next = m_tail;
+	}
 
-    Node* tail() const {
-        return m_tail;
-    }
+	~CircleList(){
+		Node *curNode = m_tail;
+		Node *nextNode;
+		for(int i = 0; i < m_size; ++ i){
+			nextNode = curNode->next;
+			delete curNode;
+			curNode = nextNode;
+		}
+	}
 
-    Node* head() const {
-        return m_tail->next;
-    }
+	Node* tail() const {
+		return m_tail;
+	}
 
-    int size() const {
-        return m_size;
-    }
+	Node* head() const {
+		return m_tail->next;
+	}
 
-    bool empty() const {
-        return m_size == 0;
-    }
+	int size() const {
+		return m_size;
+	}
 
-    void push_front(T elem){                        // 向链表头部添加元素
-        Node* node = new Node(elem);
-        if(m_tail == nullptr){
-            m_tail = node;
-            m_tail->next = m_tail;
-        }
-        else{
-            node->next = m_tail->next;
-            m_tail->next = node;
-        }
-        
-        ++ m_size;
-    }
+	bool empty() const {
+		return m_size == 0;
+	}
 
-    void pop_front(){                               // 移除链表头部的元素
-        if(m_tail == nullptr){
-            return;
-        }
+	void push_front(T elem){                        // 向链表头部添加元素
+		Node *node = new Node(elem);
+		if(m_tail == nullptr){
+			m_tail = node;
+			m_tail->next = m_tail;
+		}
+		else{
+			node->next = m_tail->next;
+			m_tail->next = node;
+		}
+		
+		++ m_size;
+	}
 
-        if(m_size == 1){
-            delete m_tail;
-            m_tail = nullptr;
-            -- m_size;
-            return;
-        }
+	void pop_front(){                               // 移除链表头部的元素
+		if(m_tail == nullptr){
+			return;
+		}
 
-        Node* node = m_tail->next;
-        m_tail->next = node->next;
-        delete node;
+		if(m_size == 1){
+			delete m_tail;
+			m_tail = nullptr;
+			-- m_size;
+			return;
+		}
 
-        -- m_size;
-    }
+		Node *node = m_tail->next;
+		m_tail->next = node->next;
+		delete node;
 
-    void push_back(T elem){                         // 向链表尾部添加元素
-        Node* node = new Node(elem);
-        if(m_tail == nullptr){
-            m_tail = node;
-            m_tail->next = m_tail;
-        }
-        else{
-            node->next = m_tail->next;
-            m_tail->next = node;
-            m_tail = node;
-        }
+		-- m_size;
+	}
 
-        ++ m_size;
-    }
+	void push_back(T elem){                         // 向链表尾部添加元素
+		Node *node = new Node(elem);
+		if(m_tail == nullptr){
+			m_tail = node;
+			m_tail->next = m_tail;
+		}
+		else{
+			node->next = m_tail->next;
+			m_tail->next = node;
+			m_tail = node;
+		}
 
-    void pop_back(){                                // 移除链表尾部的元素
-        if(m_tail == nullptr){
-            return;
-        }
+		++ m_size;
+	}
 
-        if(m_size == 1){
-            delete m_tail;
-            m_tail = nullptr;
-            -- m_size;
-            return;
-        }
+	void pop_back(){                                // 移除链表尾部的元素
+		if(m_tail == nullptr){
+			return;
+		}
 
-        Node* preNode = m_tail->next;
-        while(preNode->next != m_tail){
-            preNode = preNode->next;
-        }
-        preNode->next = m_tail->next;
-        delete m_tail;
-        m_tail = preNode;
+		if(m_size == 1){
+			delete m_tail;
+			m_tail = nullptr;
+			-- m_size;
+			return;
+		}
 
-        -- m_size;
-    }
+		Node *preNode = m_tail->next;
+		while(preNode->next != m_tail){
+			preNode = preNode->next;
+		}
+		preNode->next = m_tail->next;
+		delete m_tail;
+		m_tail = preNode;
 
-    void operator=(const CircleList& other){
-        clear();
+		-- m_size;
+	}
 
-        m_tail = nullptr;
-        m_size = other.size();
+	void operator=(const CircleList& other){
+		this->~CircleList();
 
-        if(m_size == 0){
-            return;
-        }
+		m_tail = nullptr;
+		m_size = other.size();
 
-        m_tail = new Node(other.tail()->data);
-        Node* preNode = m_tail;
-        Node* selfNode;
-        Node* otherNode = other.head();
-        while(otherNode != other.tail()){
-            selfNode = new Node(otherNode->data);
-            preNode->next = selfNode;
-            preNode = selfNode;
-            otherNode = otherNode->next;
-        }
-        preNode->next = m_tail;
-    }
+		if(m_size == 0){
+			return;
+		}
 
-    // for pratice and it doesn't
-    void insert(int index, T elem){}                // 向指定位置插入元素
+		m_tail = new Node(other.tail()->data);
+		Node *preNode = m_tail;
+		Node *selfNode;
+		Node *otherNode = other.head();
+		while(otherNode != other.tail()){
+			selfNode = new Node(otherNode->data);
+			preNode->next = selfNode;
+			preNode = selfNode;
+			otherNode = otherNode->next;
+		}
+		preNode->next = m_tail;
+	}
 
-    void remove(int index){}                        // 删除指定位置的元素
+	// for pratice and it doesn't
+	void insert(int index, T elem){}                // 向指定位置插入元素
 
-    void set(int index, T elem){}                   // 修改指定位置的元素
+	void remove(int index){}                        // 删除指定位置的元素
 
-    T& get(int index) const {}                      // 获取指定位置的元素
+	void set(int index, T elem){}                   // 修改指定位置的元素
 
-    // for unit test
-    void print(const char* name) const {
-        std::cout << name << "(CircleList): size = " << m_size << '\n';
-        std::cout << "data: ";
-        if(m_size == 0){
-            std::cout << "nullptr" << std::endl;
-            return;
-        }
+	T& get(int index) const {}                      // 获取指定位置的元素
 
-        Node* node = head();
-        for(int i = 0; i < m_size; ++ i){
-            std::cout << node->data << " -> ";
-            node = node->next;
-        }
-        std::cout << head()->data << std::endl;
-    }
+	// for unit test
+	void print(const char *name) const {
+		std::cout << name << "(CircleList): size = " << m_size << '\n';
+		std::cout << "data: ";
+		if(m_size == 0){
+			std::cout << "nullptr" << std::endl;
+			return;
+		}
 
-private:
-    void clear(){
-        Node* cur = m_tail;
-        Node* next;
-        for(int i = 0; i < m_size; ++ i){
-            next = cur->next;
-            delete cur;
-            cur = next;
-        }
-    }
+		Node *node = head();
+		for(int i = 0; i < m_size; ++ i){
+			std::cout << node->data << " -> ";
+			node = node->next;
+		}
+		std::cout << head()->data << std::endl;
+	}
 
 private:
-    Node* m_tail;
-    int m_size;
+	Node *m_tail;
+	int m_size;
 };
 
 #endif // CIRCLELIST_H_
