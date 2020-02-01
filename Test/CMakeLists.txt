@@ -7,6 +7,9 @@ EXECUTE_PROCESS(COMMAND dirname ${PROJECT_SOURCE_DIR}
 INCLUDE_DIRECTORIES(${INCLUDE_DIR})
 INCLUDE_DIRECTORIES(/usr/local/include)
 
+# BinaryTree
+ADD_EXECUTABLE(CompleteBinaryTree_test CompleteBinaryTree_test.cpp)
+
 # List
 ADD_EXECUTABLE(Deque_test Deque_test.cpp)
 ADD_EXECUTABLE(ForwardList_test ForwardList_test.cpp)
@@ -25,6 +28,3 @@ ADD_EXECUTABLE(MergeSort_test MergeSort_test.cpp)
 
 # Stack
 ADD_EXECUTABLE(Stack_test Stack_test.cpp)
-
-# TestHelper
-ADD_EXECUTABLE(TestHelper_test TestHelper_test.cpp)
