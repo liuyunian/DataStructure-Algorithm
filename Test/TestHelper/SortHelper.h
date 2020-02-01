@@ -1,5 +1,5 @@
-#ifndef TESTHELPER_H_
-#define TESTHELPER_H_
+#ifndef SORT_HELPER_H_
+#define SORT_HELPER_H_
 
 #include <iostream>
 
@@ -7,7 +7,7 @@
 #include <time.h>   // time
 #include <assert.h> // assert
 
-namespace TestHelper {
+namespace SortHelper {
 
 /**
  * 随机生成n个整数（含重复数字）
@@ -71,6 +71,6 @@ int generate_random_number(int left, int right){
     return rand() % (right-left+1) + left;
 }
 
-} // namespace TestHelper
+} // namespace SortHelper
 
-#endif // TESTHELPER_H_
+#endif // SORT_HELPER_H_

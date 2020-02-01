@@ -25,7 +25,7 @@ public:
     m_data(new T[m_capacity])
     {
       for(int i = 0; i < m_size; ++ i){
-        m_data[i] = other.at(i);                  // m_data[i] = other[i]报错
+        m_data[i] = other.m_data[i];
       }
     }
 
@@ -44,7 +44,7 @@ public:
     delete[] m_data;
     m_data = new T[m_capacity];
     for(int i = 0; i < m_size; ++ i){
-			m_data[i] = other.at(i);
+			m_data[i] = other.m_data[i];
     }
   }
 
