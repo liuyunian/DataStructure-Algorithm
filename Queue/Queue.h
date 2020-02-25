@@ -8,40 +8,40 @@
 template <typename T, typename Container = Deque<T>>
 class Queue : noncopyable {
 public:
-    Queue() = default;
-    ~Queue() = default;
+	Queue() = default;
+	~Queue() = default;
 
-    int size() const {
-        return m_container.size();
-    }
+	int size() const {
+		return m_container.size();
+	}
 
-    bool empty() const {
-        return m_container.empty();
-    }
+	bool empty() const {
+		return m_container.empty();
+	}
 
-    T& front() const {
-        return m_container.front();
-    }
+	T& front() const {
+		return m_container.front();
+	}
 
-    T& back() const {
-        return m_container.back();
-    }
+	T& back() const {
+		return m_container.back();
+	}
 
-    void push(T elem){
-        m_container.push_back(elem);
-    }
+	void push(T elem){
+		m_container.push_back(elem);
+	}
 
-    void pop(){
-        m_container.pop_front();
-    }
+	void pop(){
+		m_container.pop_front();
+	}
 
-    // for unit test
-    void print(const char* name){
-        m_container.print(name);
-    }
+	// for unit test
+	void print(const char* name){
+		m_container.print(name);
+	}
 
 private:
-    Container m_container;
+	Container m_container;
 };
 
 #endif // QUEUE_H_

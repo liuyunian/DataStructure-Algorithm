@@ -50,25 +50,57 @@ public:
 		return m_size == 0;
 	}
 
-
+	/**
+	 * @brief 前序遍历（迭代）
+	*/
 	void pre_order(){
+		// TODO
+	}
+
+	/**
+	 * @brief 前序遍历（递归）
+	*/
+	void pre_order_recursive(){
 		std::cout << "pre order: ";
 		pre_order(1);
 		std::cout << std::endl;
 	}
 
+	/**
+	 * @brief 中序遍历（迭代）
+	*/
 	void in_order(){
+		// TODO
+	}
+
+	/**
+	 * @brief 中序遍历（递归）
+	*/
+	void in_order_recursive(){
 		std::cout << "in order: ";
 		in_order(1);
 		std::cout << std::endl;
 	}
 
+	/**
+	 * @brief 后序遍历（迭代）
+	*/
 	void post_order(){
+		// TODO
+	}
+
+	/**
+	 * @brief 后序遍历（递归）
+	*/
+	void post_order_recursive(){
 		std::cout << "post order: ";
 		post_order(1);
 		std::cout << std::endl;
 	}
 
+	/**
+	 * @brief 层序遍历
+	*/
 	void level_order(){
 		std::cout << "level order: ";
 		for(int i = 1; i < m_size+1; ++ i){
@@ -76,11 +108,6 @@ public:
 		}
 
 		std::cout << std::endl;
-	}
-
-	// for unit test
-	void print() const {
-		// TODO：图形化方式打印完全二叉树
 	}
 
 private:
