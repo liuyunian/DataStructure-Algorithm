@@ -10,6 +10,7 @@ INCLUDE_DIRECTORIES(/usr/local/include)
 # BinaryTree
 ADD_EXECUTABLE(CompleteBinaryTree_test CompleteBinaryTree_test.cpp)
 ADD_EXECUTABLE(BinaryTree_test BinaryTree_test.cpp)
+ADD_EXECUTABLE(BinarySearchTree_test BinarySearchTree_test.cpp)
 
 # List
 ADD_EXECUTABLE(Deque_test Deque_test.cpp)
